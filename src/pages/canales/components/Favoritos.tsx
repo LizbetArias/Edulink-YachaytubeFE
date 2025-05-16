@@ -7,7 +7,6 @@ import {
   Typography,
   Button,
   Avatar,
-  Grid,
   IconButton,
   Chip
 } from '@mui/material';
@@ -16,16 +15,10 @@ import {
   NotificationsActive as NotificationsActiveIcon
 } from '@mui/icons-material';
 
-interface Channel {
-  id: number;
-  name: string;
-  owner: string;
-  avatar: string;
-  banner: string;
-  subscribers: number;
-  isFavorite: boolean;
-  isSubscribed: boolean;
-}
+import { Grid } from '@mui/material';
+
+import { Channel } from './interfaces';
+
 
 interface FavoritosProps {
   channels: Channel[];

@@ -15,6 +15,8 @@ import {
   Recommend as RecommendIcon,
   Add as AddIcon
 } from '@mui/icons-material';
+// Interfaces
+import { Channel } from '../../pages/canales/components/interfaces';
 
 import Canal from './components/Canal';
 import Favoritos from './components/Favoritos';
@@ -22,22 +24,7 @@ import Suscritos from './components/Suscritos';
 import Recomendados from './components/Recomendados';
 
 // Interfaces
-interface Channel {
-  id: number;
-  name: string;
-  owner: string;
-  isPublic: boolean;
-  isActive: boolean;
-  avatar: string;
-  banner: string;
-  subscribers: number;
-  videos: number;
-  description?: string;
-  category?: string;
-  isFavorite: boolean;
-  isSubscribed: boolean;
-  notificationLevel: 'all' | 'none' | 'custom';
-}
+
 
 const ChannelsPage = () => {
   const theme = useTheme();

@@ -28,19 +28,7 @@ import {
   Lock as LockIcon,
 } from '@mui/icons-material';
 
-interface Channel {
-  id: number;
-  name: string;
-  owner: string;
-  isPublic: boolean;
-  isActive: boolean;
-  avatar: string;
-  banner: string;
-  subscribers: number;
-  videos: number;
-  description?: string;
-  category?: string;
-}
+import { Channel } from './interfaces';
 
 interface CanalProps {
   channel: Channel;

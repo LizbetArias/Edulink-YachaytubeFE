@@ -16,17 +16,10 @@ import {
   FavoriteBorder as FavoriteBorderIcon
 } from '@mui/icons-material';
 
-interface Channel {
-  id: number;
-  name: string;
-  owner: string;
-  avatar: string;
-  banner: string;
-  subscribers: number;
-  category: string;
-  isFavorite: boolean;
-  isSubscribed: boolean;
-}
+// Aca importo las interfaces - model
+import { Channel } from './interfaces'; // ruta correspondiente
+// colocalo en todo los componentes que lo necesitas pfv
+
 
 interface RecomendadosProps {
   channels: Channel[];
