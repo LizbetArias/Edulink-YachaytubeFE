@@ -8,17 +8,13 @@ import {
   Button,
   Avatar,
   IconButton,
-  Chip
 } from '@mui/material';
 import {
   Favorite as FavoriteIcon,
   NotificationsActive as NotificationsActiveIcon
 } from '@mui/icons-material';
 
-import { Grid } from '@mui/material';
-
 import { Channel } from './interfaces';
-
 
 interface FavoritosProps {
   channels: Channel[];
@@ -30,19 +26,37 @@ const Favoritos: React.FC<FavoritosProps> = ({ channels, onToggleFavorite, onTog
   const favoriteChannels = channels.filter(channel => channel.isFavorite);
 
   return (
-    <Grid container spacing={3}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 3
+      }}
+    >
       {favoriteChannels.map((channel) => (
-        <Grid item xs={12} sm={6} md={4} key={channel.id}>
-          <Card sx={{ 
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            borderRadius: 2,
-            transition: 'transform 0.2s',
-            '&:hover': {
-              transform: 'translateY(-4px)'
-            }
-          }}>
+        <Box
+          key={channel.id}
+          sx={{
+            width: {
+              xs: '100%',
+              sm: 'calc(50% - 12px)',
+              md: 'calc(33.33% - 12px)'
+            },
+            boxSizing: 'border-box'
+          }}
+        >
+          <Card
+            sx={{
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              borderRadius: 2,
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)'
+              }
+            }}
+          >
             <CardMedia
               component="img"
               height="140"
@@ -68,15 +82,15 @@ const Favoritos: React.FC<FavoritosProps> = ({ channels, onToggleFavorite, onTog
               <Typography color="text.secondary" gutterBottom>
                 {channel.subscribers.toLocaleString()} suscriptores
               </Typography>
-              
+
               <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mb: 2 }}>
-                <IconButton 
+                <IconButton
                   color="error"
                   onClick={() => onToggleFavorite(channel.id)}
                 >
                   <FavoriteIcon />
                 </IconButton>
-                <IconButton 
+                <IconButton
                   color={channel.isSubscribed ? "primary" : "default"}
                   onClick={() => onToggleSubscription(channel.id)}
                 >
@@ -94,14 +108,14 @@ const Favoritos: React.FC<FavoritosProps> = ({ channels, onToggleFavorite, onTog
               </Button>
             </CardContent>
           </Card>
-        </Grid>
+        </Box>
       ))}
-      
+
       {favoriteChannels.length === 0 && (
-        <Box sx={{ 
-          width: '100%', 
-          textAlign: 'center', 
-          py: 8 
+        <Box sx={{
+          width: '100%',
+          textAlign: 'center',
+          py: 8
         }}>
           <Typography variant="h6" color="text.secondary" gutterBottom>
             No tienes canales favoritos
@@ -111,7 +125,7 @@ const Favoritos: React.FC<FavoritosProps> = ({ channels, onToggleFavorite, onTog
           </Typography>
         </Box>
       )}
-    </Grid>
+    </Box>
   );
 };
 

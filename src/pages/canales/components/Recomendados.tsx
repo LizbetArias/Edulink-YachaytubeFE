@@ -7,7 +7,6 @@ import {
   Typography,
   Button,
   Avatar,
-  Grid,
   IconButton,
   Chip
 } from '@mui/material';
@@ -18,8 +17,6 @@ import {
 
 // Aca importo las interfaces - model
 import { Channel } from './interfaces'; // ruta correspondiente
-// colocalo en todo los componentes que lo necesitas pfv
-
 
 interface RecomendadosProps {
   channels: Channel[];
@@ -29,19 +26,31 @@ interface RecomendadosProps {
 
 const Recomendados: React.FC<RecomendadosProps> = ({ channels, onToggleFavorite, onSubscribe }) => {
   return (
-    <Grid container spacing={3}>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
       {channels.map((channel) => (
-        <Grid item xs={12} sm={6} md={4} key={channel.id}>
-          <Card sx={{ 
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            borderRadius: 2,
-            transition: 'transform 0.2s',
-            '&:hover': {
-              transform: 'translateY(-4px)'
-            }
-          }}>
+        <Box
+          key={channel.id}
+          sx={{
+            width: {
+              xs: '100%',
+              sm: 'calc(50% - 12px)',
+              md: 'calc(33.33% - 12px)'
+            },
+            boxSizing: 'border-box'
+          }}
+        >
+          <Card
+            sx={{
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              borderRadius: 2,
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)'
+              }
+            }}
+          >
             <CardMedia
               component="img"
               height="140"
@@ -89,9 +98,9 @@ const Recomendados: React.FC<RecomendadosProps> = ({ channels, onToggleFavorite,
               </Button>
             </CardContent>
           </Card>
-        </Grid>
+        </Box>
       ))}
-    </Grid>
+    </Box>
   );
 };
 

@@ -7,7 +7,6 @@ import {
   Typography,
   Button,
   Avatar,
-  Grid,
   IconButton,
   Menu,
   MenuItem,
@@ -22,16 +21,7 @@ import {
   Delete as DeleteIcon
 } from '@mui/icons-material';
 
-interface Channel {
-  id: number;
-  name: string;
-  owner: string;
-  avatar: string;
-  banner: string;
-  subscribers: number;
-  isSubscribed: boolean;
-  notificationLevel: 'all' | 'none' | 'custom';
-}
+import { Channel } from './interfaces';
 
 interface SuscritosProps {
   channels: Channel[];
@@ -56,10 +46,24 @@ const Suscritos: React.FC<SuscritosProps> = ({ channels, onUnsubscribe, onChange
   const subscribedChannels = channels.filter(channel => channel.isSubscribed);
 
   return (
-    <Grid container spacing={3}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 3,
+        justifyContent: { xs: 'center', sm: 'flex-start' },
+        width: '100%'
+      }}
+    >
       {subscribedChannels.map((channel) => (
-        <Grid item xs={12} sm={6} md={4} key={channel.id}>
-          <Card sx={{ 
+        <Box
+          key={channel.id}
+          sx={{
+            flex: '1 1 calc(100% - 24px)',
+            maxWidth: { xs: '100%', sm: 'calc(50% - 24px)', md: 'calc(33.333% - 24px)' },
+          }}
+        >
+          <Card sx={{
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
@@ -113,7 +117,7 @@ const Suscritos: React.FC<SuscritosProps> = ({ channels, onUnsubscribe, onChange
               </Box>
             </CardContent>
           </Card>
-        </Grid>
+        </Box>
       ))}
 
       <Menu
@@ -160,10 +164,10 @@ const Suscritos: React.FC<SuscritosProps> = ({ channels, onUnsubscribe, onChange
       </Menu>
 
       {subscribedChannels.length === 0 && (
-        <Box sx={{ 
-          width: '100%', 
-          textAlign: 'center', 
-          py: 8 
+        <Box sx={{
+          width: '100%',
+          textAlign: 'center',
+          py: 8
         }}>
           <Typography variant="h6" color="text.secondary" gutterBottom>
             No estás suscrito a ningún canal
@@ -173,7 +177,7 @@ const Suscritos: React.FC<SuscritosProps> = ({ channels, onUnsubscribe, onChange
           </Typography>
         </Box>
       )}
-    </Grid>
+    </Box>
   );
 };
 
