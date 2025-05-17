@@ -132,15 +132,6 @@ const Canal: React.FC<CanalProps> = ({ channel, onEdit, onDelete, onToggleActive
             variant="outlined"
           />
         </Box>
-
-        <Button
-          variant="contained"
-          color={channel.isActive ? 'error' : 'success'}
-          onClick={() => onToggleActive(channel.id)}
-          fullWidth
-        >
-          {channel.isActive ? 'Desactivar Canal' : 'Activar Canal'}
-        </Button>
       </CardContent>
 
       <Dialog open={openDialog} onClose={handleClose} maxWidth="sm" fullWidth>

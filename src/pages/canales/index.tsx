@@ -115,16 +115,9 @@ const ChannelsPage = () => {
         alignItems: 'center', 
         mb: 3 
       }}>
-        <Typography variant="h5" component="h1">
+        <Typography variant="h5" component="h1" sx={{ fontWeight: 'bold' }}>
           Gestión de Canales
         </Typography>
-        <Button
-          variant="contained"
-          startIcon={<AddIcon />}
-          sx={{ display: { xs: 'none', sm: 'flex' } }}
-        >
-          Crear Canal
-        </Button>
       </Box>
 
       <Tabs 
@@ -136,7 +129,7 @@ const ChannelsPage = () => {
       >
         <Tab 
           icon={<VideoLibraryIcon />} 
-          label="Mi Canal" 
+          label="Mi Perfil" 
           iconPosition="start"
         />
         <Tab 
